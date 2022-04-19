@@ -8,10 +8,17 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Box box = Hive.box<HivePickupData>('testBox');
+    String newName = '';
 
     return Column(
       children: [
         const Text("hive test"),
+        TextField(
+          controller: TextEditingController(),
+          onChanged: (v) {
+            newName = v;
+          },
+        ),
         ElevatedButton(
             onPressed: () {
               int idx = 0;
@@ -28,7 +35,7 @@ class Home extends StatelessWidget {
                   HivePickupData(
                       ccId: "32ㅑ겨9ㅈ댜겨랴ㅐ",
                       restaurantId: "restaurantId",
-                      restaurantName: "restaurantName",
+                      restaurantName: newName,
                       pickDate: DateTime.now(),
                       writeDate: DateTime.now(),
                       pickVolume: 10,
@@ -36,7 +43,7 @@ class Home extends StatelessWidget {
                       id: idx));
             },
             child: const Text("hive get")),
-        Text("hive data ?? ${box.get(box.length - 1).ccId}")
+        Text("hive data ?? ${box.get(box.length - 1).restaurantName}")
       ],
     );
   }

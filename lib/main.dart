@@ -22,13 +22,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(),
       home: Scaffold(
-          body:
-              // ValueListenableBuilder(
-              //     valueListenable: Hive.box<HivePickupData>('testBox').listenable(),
-              //     builder: ((context, value, child) =>
-              Home()
-          // )),
-          ),
+        body: ValueListenableBuilder(
+            valueListenable: Hive.box<HivePickupData>('testBox').listenable(),
+            builder: ((context, value, child) => Home())),
+      ),
     );
   }
 }
